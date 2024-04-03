@@ -20,8 +20,19 @@ const PORT = process.env.PORT || 4000;
 dotenv.config();
 
 // Connecting to database
-database.connect();
- 
+// database.connect();
+const connectDB = async() => {
+  try {
+    await database.connect();
+  }
+  catch(error) {
+    console.log(error.message)
+  }
+}
+
+connectDB();
+
+
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
